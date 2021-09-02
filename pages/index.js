@@ -22,7 +22,7 @@ export default class Home extends PureComponent {
     return (
       <Layout className="homepage">
         <MetaTags
-          title="Bundlephobia | Size of NPM dependencies"
+          title="Bundlelog | Version of NPM dependencies"
           canonicalPath=""
         />
         <div className="homepage__container">
@@ -140,10 +140,10 @@ export default class Home extends PureComponent {
           </svg>
           <div className="logo">
             <span>Bundle</span>
-            <span className="logo__alt">Phobia</span>
+            <span className="logo__alt">Log</span>
           </div>
           <h1 className="homepage__tagline">
-            find the cost of adding a npm package to your bundle
+            find change log of npm packages on you project
           </h1>
           <AutocompleteInputBox className="homepage__search-input">
             <AutocompleteInput

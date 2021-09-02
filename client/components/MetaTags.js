@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 
 export const DEFAULT_DESCRIPTION_START =
-  'Bundlephobia helps you find the performance impact of npm packages.'
+  'Bundlelog helps you find the performance impact of npm packages.'
 
 export default function MetaTags({
   description,
@@ -13,10 +13,10 @@ export default function MetaTags({
   isLargeImage,
 }) {
   const defaultDescription = `${DEFAULT_DESCRIPTION_START} Find the size of any javascript package and its effect on your frontend bundle.`
-  const defaultImage = 'https://bundlephobia.com/android-chrome-256x256.png'
+  const defaultImage = 'https://bundlelog.com/android-chrome-256x256.png'
   const origin =
     typeof window === 'undefined'
-      ? 'https://bundlephobia.com'
+      ? 'https://bundlelog.com'
       : window.location.origin
 
   return (
@@ -39,7 +39,7 @@ export default function MetaTags({
       <meta
         property="twitter:creator"
         key="twitter:creator"
-        content="@_pastelsky"
+        content="@cuthanh15"
       />
       {twitterDescription && (
         <meta

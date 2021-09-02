@@ -77,13 +77,13 @@ export default class Layout extends Component {
               <a
                 className="footer__credits-profile"
                 target="_blank"
-                href="https://github.com/pastelsky" rel="noreferrer"
+                href="https://github.com/thanhlmm" rel="noreferrer"
               >
-                @pastelsky
+                @thanhlmm
               </a>
               <a
                 target="_blank"
-                href="https://github.com/pastelsky/bundlephobia" rel="noreferrer"
+                href="https://github.com/thanhlmm/bundlelog" rel="noreferrer"
               >
                 <button className="footer__credits-fork-button">
                   Star on GitHub

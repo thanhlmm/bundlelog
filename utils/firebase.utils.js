@@ -71,12 +71,11 @@ class FirebaseUtils {
 
     const firebasePromise = ref.once('value').then(snapshot => snapshot.val())
     const yarnPromise = axios.get(
-      `https://${
-        process.env.ALGOLIA_APP_ID
+      `https://${process.env.ALGOLIA_APP_ID
       }-dsn.algolia.net/1/indexes/npm-search/${encodeURIComponent(name)}`,
       {
         params: {
-          'x-algolia-agent': 'bundlephobia',
+          'x-algolia-agent': 'bundlelog',
           'x-algolia-application-id': process.env.ALGOLIA_APP_ID,
           'x-algolia-api-key': process.env.ALGOLIA_API_KEY,
         },

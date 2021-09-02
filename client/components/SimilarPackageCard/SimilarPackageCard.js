@@ -19,7 +19,7 @@ export default class SimilarPackageCard extends Component {
       title: `Package suggestion: <package-name> for \`${this.props.category}\``,
     })
 
-    return `https://github.com/pastelsky/bundlephobia/issues/new?${params}`
+    return `https://github.com/thanhlmm/bundlelog/issues/new?${params}`
   }
   render() {
     const { pack, comparisonSizePercent, isEmpty } = this.props

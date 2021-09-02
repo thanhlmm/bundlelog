@@ -25,10 +25,10 @@ async function resolvePackage(packageString) {
 }
 
 function getRequestPriority(ctx) {
-  const client = ctx.headers['x-bundlephobia-user']
+  const client = ctx.headers['x-bundlelog-user']
 
   switch (client) {
-    case 'bundlephobia website':
+    case 'bundlelog website':
       return Queue.priority.HIGH
       break
     case 'yarn website':

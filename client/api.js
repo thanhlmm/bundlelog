@@ -7,7 +7,7 @@ export default class API {
     }
 
     if (isInternal) {
-      headers['X-Bundlephobia-User'] = 'bundlephobia website'
+      headers['X-Bundlelog-User'] = 'bundlelog website'
     }
     return fetch(url, { headers }).then(res => {
       if (!res.ok) {

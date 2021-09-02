@@ -56,7 +56,7 @@ export default class Header extends Component {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href="https://badgen.net/#bundlephobia"
+                  href="https://badgen.net/#bundlelog"
                 >
                   Badges
                 </a>
@@ -65,7 +65,7 @@ export default class Header extends Component {
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  href=" https://opencollective.com/bundlephobia"
+                  href=" https://opencollective.com/bundlelog"
                 >
                   Opencollective
                 </a>
@@ -78,7 +78,7 @@ export default class Header extends Component {
                 </Link>
               </li>
             </ul>
-            <a target="_blank" href="https://github.com/pastelsky/bundlephobia">
+            <a target="_blank" href="https://github.com/thanhlmm/bundlelog" rel="noreferrer">
               <GithubLogo />
             </a>
           </section>

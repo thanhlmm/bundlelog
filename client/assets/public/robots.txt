@@ -4,7 +4,7 @@ Allow: /
 Disallow: /scan-results
 
 # Host
-Host: https://bundlephobia.com
+Host: https://bundlelog.com
 
 # Sitemaps
-Sitemap: https://bundlephobia.com/sitemap.xml
+Sitemap: https://bundlelog.com/sitemap.xml

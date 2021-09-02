@@ -30,7 +30,7 @@ export default class ResultLayout extends Component {
                   <a
                     target="_blank"
                     rel="noreferrer noopener"
-                    href="https://badgen.net/#bundlephobia"
+                    href="https://badgen.net/#bundlelog"
                   >
                     Badges
                   </a>
@@ -39,7 +39,7 @@ export default class ResultLayout extends Component {
                   <a
                     target="_blank"
                     rel="noreferrer noopener"
-                    href="https://opencollective.com/bundlephobia"
+                    href="https://opencollective.com/bundlelog"
                   >
                     Opencollective
                   </a>
@@ -54,7 +54,7 @@ export default class ResultLayout extends Component {
               </ul>
               <a
                 target="_blank"
-                href="https://github.com/pastelsky/bundlephobia"
+                href="https://github.com/thanhlmm/bundlelog" rel="noreferrer"
               >
                 <GithubLogo />
               </a>
