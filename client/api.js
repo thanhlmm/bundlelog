@@ -45,8 +45,18 @@ export default class API {
     return API.get(`/api/${packageName}/changelog`)
   }
 
-  static getExports(packageString) {
-    return API.get(`/api/exports?package=${packageString}`)
+  static getRate({ packageName, version }) {
+    return API.get(`/api/${packageName}/rate?version=${version}`)
+  }
+
+  static setRate({ packageName, version }, data) {
+    return fetch(`/api/${packageName}/rate?version=${version}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(response => response.json())
   }
 
   static getExportsSizes(packageString) {

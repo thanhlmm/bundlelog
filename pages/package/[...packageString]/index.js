@@ -199,6 +199,7 @@ class ResultPage extends PureComponent {
   }
 
   render() {
+    const { router } = this.props;
     const {
       inputInitialValue,
       resultsPromiseState,
@@ -212,29 +213,6 @@ class ResultPage extends PureComponent {
     const { errorName, errorBody, errorDetails } = resolveBuildError(
       resultsError
     )
-
-    const stats = [
-      {
-        symbol: 'No changes are needed',
-        holdingsPercent: 0.3,
-        color: '#00EA92',
-      },
-      {
-        symbol: 'Search and replace',
-        holdingsPercent: 0.4,
-        color: '#627EEA',
-      },
-      {
-        symbol: 'Manual refactor',
-        holdingsPercent: 0.2,
-        color: '#F3BA2F',
-      },
-      {
-        symbol: 'Completely rewrite',
-        holdingsPercent: 0.1,
-        color: '#FF0000',
-      }
-    ]
 
     const getQuickStatsBar = () =>
       resultsPromiseState === 'fulfilled' && (
@@ -291,11 +269,7 @@ class ResultPage extends PureComponent {
                   <ReactMarkdown>{release.body}</ReactMarkdown>
                 </div>
                 <div className="change-logs__stats">
-                  <BarGraph data={stats} />
-                </div>
-
-                <div>
-                  <RateChangeLog />
+                  <RateChangeLog packageName={router.query.packageString[0]} version={release.tag_name} />
                 </div>
               </div>)}
             </div>}

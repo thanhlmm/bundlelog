@@ -214,6 +214,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
+"@sagi.io/workers-kv@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@sagi.io/workers-kv/-/workers-kv-0.0.10.tgz#96b9b621749009c8e507147062e73f2ce88bba10"
+  integrity sha512-f6Ok228AN4XnSURs6bOBsYqj9aafy31X13pZaReSfbWnNo9nKtosuDbCDTT4nf2YLjXx53Sh56uC8I7weSSAFA==
+
 "@trysound/sax@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.1.1.tgz#3348564048e7a2d7398c935d466c0414ebb6a669"

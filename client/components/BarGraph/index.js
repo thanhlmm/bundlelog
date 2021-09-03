@@ -42,13 +42,12 @@ const BarGraph = ({ data }) => {
       <div className="allo-legend">
         {data.map(({ holdingsPercent, color, symbol }, index) => {
           const p = formatPercent(holdingsPercent * 100);
-          const othersp = formatPercent((1 - sum) * 100);
           let disp = holdingsPercent > 0.1 || focusOne === index || 'none';
           if (holdingsPercent <= 0.0001) {
             return null;
           }
           return (
-            <div key={index} style={{ width: p, display: disp }}>
+            <div key={index}>
               <span className="allo-legend-dot" style={{ background: color }}></span>
               <span className="allo-legend-percent">{p}</span>
               <span className="allo-legend-symbol">{' '}{symbol}</span>

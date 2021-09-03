@@ -8,6 +8,11 @@
     border-radius: 5px;
     cursor: pointer;
     color: $dark-raven;
+
+    &:disabled {
+      border: 2px solid $pastel-green;
+      cursor: not-allowed;
+    }
   }
 
   button + button {
