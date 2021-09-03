@@ -24,7 +24,7 @@ const RateChangeLog = (props) => {
         <button onClick={handleClick}>🤔 Others</button>
       </div>
 
-      <div className="introduction">Show the community your thought about this update, so someone out there will save tons of time 😇</div>
+      <div className="introduction">Show the community your thought about this update, so someone out there gonna save tons of time 😇</div>
     </div>
   )
 }
