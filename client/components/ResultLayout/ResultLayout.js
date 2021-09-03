@@ -44,13 +44,13 @@ export default class ResultLayout extends Component {
                     Opencollective
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/scan">
                     <a>
                       Scan package.json <sup>β</sup>
                     </a>
                   </Link>
-                </li>
+                </li> */}
               </ul>
               <a
                 target="_blank"

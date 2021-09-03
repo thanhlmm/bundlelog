@@ -70,13 +70,13 @@ export default class Header extends Component {
                   Opencollective
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/scan">
                   <a>
                     Scan package.json <sup>β</sup>
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <a target="_blank" href="https://github.com/thanhlmm/bundlelog" rel="noreferrer">
               <GithubLogo />
