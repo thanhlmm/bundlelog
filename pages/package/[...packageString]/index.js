@@ -102,7 +102,6 @@ class ResultPage extends PureComponent {
   fetchChangeLog = packageString => {
     API.getChangeLog(packageString)
       .then(results => {
-        console.log(results);
         if (this.activeQuery !== packageString) return
 
         this.setState({
@@ -217,9 +216,6 @@ class ResultPage extends PureComponent {
     const { errorName, errorBody, errorDetails } = resolveBuildError(
       resultsError
     )
-
-    console.log(resultsPromiseState);
-    console.log(results);
 
     const getQuickStatsBar = () =>
       resultsPromiseState === 'fulfilled' && (
