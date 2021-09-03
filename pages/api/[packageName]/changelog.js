@@ -2,7 +2,7 @@
 
 export const getRepoName = (url = '') => {
   // git+https://github.com/facebook/react.git
-  return url.replace('git+', '').replace('https://github.com/', '').replace('.git', '');
+  return url.replace('git+', '').replace('git://github.com/', '').replace('https://github.com/', '').replace('.git', '');
 }
 
 export const getReleases = async (repoName, page = 1) => {

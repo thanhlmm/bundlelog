@@ -23,6 +23,8 @@ const RateChangeLog = (props) => {
         <button onClick={handleClick}>🥰 Develop experience</button>
         <button onClick={handleClick}>🤔 Others</button>
       </div>
+
+      <div className="introduction">Show the community your thought about this update, so someone out there will save tons of time 😇</div>
     </div>
   )
 }

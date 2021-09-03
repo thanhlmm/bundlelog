@@ -7,9 +7,19 @@
     border: 1px solid $raven;
     border-radius: 5px;
     cursor: pointer;
+    color: $dark-raven;
   }
 
   button + button {
     margin-left: 16px;
+  }
+
+  :global {
+    .introduction {
+      text-align: center;
+      margin-top: 16px;
+      color: $raven;
+      font-size: 0.8rem;
+    }
   }
 }

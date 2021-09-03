@@ -259,4 +259,57 @@
   .change-logs__item + .change-logs__item {
     margin-top: 32px;
   }
+
+  .change-logs__item {
+    position: relative;
+
+    &:hover {
+      .change-logs__links {
+        opacity: 1;
+      }
+    }
+
+    .title {
+      margin-bottom: 4px;
+    }
+
+    .sub {
+      color: $dark-raven;
+      margin-top: 0;
+    }
+
+    .change-logs__links {
+      width: 18px;
+      position: absolute;
+      left: -32px;
+      top: 0;
+      color: $dark-raven;
+      opacity: 0;
+      transition: all 0.5s ease-in;
+
+      svg {
+        padding: 4px 0;
+      }
+
+      a {
+        color: $dark-raven;
+      }
+
+      a + a {
+        margin-top: 8px;
+      }
+    }
+
+    .change-logs__content {
+      color: $dark-raven;
+
+      li + li {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .change-logs__time--ralative {
+    color: $raven;
+  }
 }

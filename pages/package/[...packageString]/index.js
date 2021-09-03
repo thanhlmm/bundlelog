@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-// import Analytics from 'client/analytics'
 
 import ResultLayout from 'client/components/ResultLayout'
 import AutocompleteInput from 'client/components/AutocompleteInput'
@@ -10,12 +9,9 @@ import Router, { withRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import { parsePackageString } from 'utils/common.utils'
 import {
-  getTimeFromSize,
-  DownloadSpeed,
   resolveBuildError,
   formatSize,
 } from 'utils'
-import Stat from 'client/components/Stat'
 
 import API from 'client/api'
 import MetaTags, { DEFAULT_DESCRIPTION_START } from 'client/components/MetaTags'
@@ -30,14 +26,6 @@ dayjs.extend(relativeTime)
 import Warning from 'client/components/Warning/Warning'
 import BarGraph from 'client/components/BarGraph'
 
-const isEmptyObject = (input) => {
-  try {
-    return !!Object.keys(input).length
-  } catch (error) {
-    return false;
-  }
-}
-
 class ResultPage extends PureComponent {
   state = {
     results: {},
@@ -48,6 +36,7 @@ class ResultPage extends PureComponent {
     changeLogResults: [],
     similarPackages: [],
     similarPackagesCategory: '',
+    repoName: '',
   }
 
   getPackageString(router) {
@@ -91,6 +80,7 @@ class ResultPage extends PureComponent {
           {
             inputInitialValue: newPackageString,
             results,
+            repoName: results.repoName,
             resultsPromiseState: 'fulfilled'
           }
         )
@@ -214,6 +204,7 @@ class ResultPage extends PureComponent {
       resultsPromiseState,
       resultsError,
       results,
+      repoName,
       changeLogResultsPromiseState,
       changeLogResults
     } = this.state
@@ -250,7 +241,7 @@ class ResultPage extends PureComponent {
         <QuickStatsBar
           description={results.description}
           dependencyCount={results.dependencyCount}
-          repository={results.repository}
+          repository={`https://github.com/${results.repoName}`}
           name={results.name}
         />
       )
@@ -280,10 +271,22 @@ class ResultPage extends PureComponent {
 
             {changeLogResultsPromiseState === 'fulfilled' && <div className="change-logs">
               {changeLogResults.map(release => <div key={release.id} className="change-logs__item">
-                <h2>
+                <h2 className="title">
                   <a href={release.html_url} target="_blank" rel="noreferrer" >${release.name}</a>
                 </h2>
-                <p className="sub">{dayjs(release.created_at).fromNow()}</p>
+                <p className="sub">{dayjs(release.created_at).format('DD MMMM, YYYY')} - <span className="change-logs__time--ralative">{dayjs(release.created_at).fromNow()}</span></p>
+
+                <div className="change-logs__links">
+                  <a href={release.html_url.replace('releases/tag', 'tree')} target="_blank" rel="noreferrer" >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </a>
+
+                  {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                  </svg> */}
+                </div>
                 <div className="change-logs__content">
                   <ReactMarkdown>{release.body}</ReactMarkdown>
                 </div>
