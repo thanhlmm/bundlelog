@@ -40,7 +40,7 @@ export default class BuildProgressIndicator extends Component {
 
   getProgressText = stage => {
     const progressText = {
-      resolving: 'Resolving version and dependencies',
+      resolving: 'Resolving changelog',
       building: 'Bundling package',
       minifying: 'Minifying, GZipping',
       calculating: 'Calculating file sizes',

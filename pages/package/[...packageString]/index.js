@@ -247,10 +247,14 @@ class ResultPage extends PureComponent {
               </div>
             )}
 
+            {changeLogResultsPromiseState === 'rejected' && <div className="change-logs__error">
+              <Warning>Not found any change log for this package. If you think this is bug 🐞, please open an issue!</Warning>
+            </div>}
+
             {changeLogResultsPromiseState === 'fulfilled' && <div className="change-logs">
               {changeLogResults.map(release => <div key={release.id} className="change-logs__item">
                 <h2 className="title">
-                  <a href={release.html_url} target="_blank" rel="noreferrer" >${release.name}</a>
+                  <a href={release.html_url} target="_blank" rel="noreferrer" >{release.name || release.tag_name}</a>
                 </h2>
                 <p className="sub">{dayjs(release.created_at).format('DD MMMM, YYYY')} - <span className="change-logs__time--ralative">{dayjs(release.created_at).fromNow()}</span></p>
 
@@ -266,6 +270,7 @@ class ResultPage extends PureComponent {
                   </svg> */}
                 </div>
                 <div className="change-logs__content">
+                  TODO: Ask auto link issue
                   <ReactMarkdown>{release.body}</ReactMarkdown>
                 </div>
                 <div className="change-logs__stats">

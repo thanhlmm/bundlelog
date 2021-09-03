@@ -14,8 +14,23 @@ export default async function handler(req, res) {
   const packageInfo = await fetch(`https://registry.npmjs.org/${packageName}`).then(response => response.json());
   // TODO: Check packageInfo?.repository.type === git
   const repoName = getRepoName(packageInfo?.repository?.url);
+  if (!packageInfo?.repository?.url) {
+    res.status(400).json({
+      ok: false,
+      message: 'Not Found'
+    });
+    return;
+  }
 
   const releases = await getReleases(repoName, page);
+
+  if (releases.message) {
+    res.status(400).json({
+      ok: false,
+      message: releases.message
+    });
+    return;
+  }
 
   res.status(200).json(releases);
 }

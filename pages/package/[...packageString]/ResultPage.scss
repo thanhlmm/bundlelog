@@ -256,6 +256,15 @@
     color: $cornflower-blue;
   }
 
+  &__error {
+    margin-top: 32px;
+
+    .warning-bar {
+      padding: 16px 16px;
+      font-size: 1rem;
+    }
+  }
+
   .change-logs__item + .change-logs__item {
     margin-top: 32px;
   }
