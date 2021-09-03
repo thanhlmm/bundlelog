@@ -15,15 +15,6 @@ class QuickStatsBar extends Component {
     description: '',
   }
 
-  getStatItemCount = () => {
-    const { isTreeShakeable, hasSideEffects } = this.props
-    let statItemCount = 0
-
-    if (isTreeShakeable) statItemCount += 1
-    if (hasSideEffects !== true) statItemCount += 1
-    return statItemCount
-  }
-
   getTrimmedDescription = () => {
     let trimmed
     const { description } = this.props
@@ -38,13 +29,10 @@ class QuickStatsBar extends Component {
 
   render() {
     const {
-      isTreeShakeable,
-      hasSideEffects,
       dependencyCount,
       name,
       repository,
     } = this.props
-    const statItemCount = this.getStatItemCount()
 
     return (
       <div className="quick-stats-bar">
@@ -53,32 +41,15 @@ class QuickStatsBar extends Component {
           title={this.getTrimmedDescription()}
         >
           <InfoIcon />
-          {statItemCount < 2 && (
-            <span
-              className="quick-stats-bar__stat--description-content"
-              dangerouslySetInnerHTML={{ __html: this.getTrimmedDescription() }}
-              style={{
-                maxWidth: `${500 - statItemCount * 280}px`,
-              }}
-            />
-          )}
+          <span
+            className="quick-stats-bar__stat--description-content"
+            dangerouslySetInnerHTML={{ __html: this.getTrimmedDescription() }}
+            style={{
+              maxWidth: `${500}px`,
+            }}
+          />
         </div>
 
-        {isTreeShakeable && (
-          <div className="quick-stats-bar__stat">
-            <TreeShakeIcon className="quick-stats-bar__stat-icon" />{' '}
-            <span>tree-shakeable</span>
-          </div>
-        )}
-
-        {!(hasSideEffects === true) && (
-          <div className="quick-stats-bar__stat">
-            <SideEffectIcon className="quick-stats-bar__stat-icon" />{' '}
-            <span>
-              {hasSideEffects.length ? 'some side-effects' : 'side-effect free'}
-            </span>
-          </div>
-        )}
         <div className="quick-stats-bar__stat quick-stats-bar__stat--optional">
           <DependencyIcon className="quick-stats-bar__stat-icon" />
           <span>

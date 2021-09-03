@@ -22,6 +22,8 @@ import 'client/components/SimilarPackageCard/SimilarPackageCard.scss';
 import 'client/components/Stat/Stat.scss';
 import 'client/components/Warning/Warning.scss';
 
+import 'pages/package/[...packageString]/ResultPage.scss';
+
 import './index.scss';
 
 function MyApp({ Component, pageProps }) {

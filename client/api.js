@@ -37,8 +37,12 @@ export default class API {
     })
   }
 
-  static getInfo(packageString) {
-    return API.get(`/api/size?package=${packageString}&record=true`)
+  static getInfo(packageName) {
+    return API.get(`/api/${packageName}/info`)
+  }
+
+  static getChangeLog(packageName) {
+    return API.get(`/api/${packageName}/changelog`)
   }
 
   static getExports(packageString) {

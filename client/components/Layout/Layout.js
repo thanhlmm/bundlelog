@@ -28,7 +28,7 @@ export default class Layout extends Component {
         <section className={className}>{children}</section>
 
         <footer>
-          <div className="footer__recent-search-bar">
+          {/* <div className="footer__recent-search-bar">
             <div className="footer__recent-search-bar__wrap">
               <h4>Recent searches</h4>
               <ul className="footer__recent-search-list">
@@ -41,7 +41,7 @@ export default class Layout extends Component {
                 ))}
               </ul>
             </div>
-          </div>
+          </div> */}
           <section className="footer__split">
             <div className="footer__description">
               <h3> What does this thing do? </h3>

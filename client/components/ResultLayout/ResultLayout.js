@@ -19,7 +19,7 @@ export default class ResultLayout extends Component {
                 <a>
                   <div className="logo-small">
                     <span>Bundle</span>
-                    <span className="logo-small__alt">Phobia</span>
+                    <span className="logo-small__alt">Log</span>
                   </div>
                 </a>
               </Link>
