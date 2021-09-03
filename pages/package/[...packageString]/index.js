@@ -270,7 +270,7 @@ class ResultPage extends PureComponent {
                   </svg> */}
                 </div>
                 <div className="change-logs__content">
-                  TODO: Ask auto link issue
+                  {/* TODO: Ask auto link issue */}
                   <ReactMarkdown>{release.body}</ReactMarkdown>
                 </div>
                 <div className="change-logs__stats">
