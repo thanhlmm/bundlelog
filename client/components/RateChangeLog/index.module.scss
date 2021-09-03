@@ -1,0 +1,15 @@
+@import "../../../stylesheets/colors";
+
+.RateChangeLog {
+  button {
+    padding: 6px 8px;
+    background: transparent;
+    border: 1px solid $raven;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button + button {
+    margin-left: 16px;
+  }
+}

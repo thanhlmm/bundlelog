@@ -5,8 +5,8 @@ import ResultLayout from 'client/components/ResultLayout'
 import AutocompleteInput from 'client/components/AutocompleteInput'
 import AutocompleteInputBox from 'client/components/AutocompleteInputBox'
 import BuildProgressIndicator from 'client/components/BuildProgressIndicator'
+import RateChangeLog from 'client/components/RateChangeLog';
 import Router, { withRouter } from 'next/router'
-import semver from 'semver'
 import ReactMarkdown from 'react-markdown'
 import { parsePackageString } from 'utils/common.utils'
 import {
@@ -22,8 +22,13 @@ import MetaTags, { DEFAULT_DESCRIPTION_START } from 'client/components/MetaTags'
 
 import EmptyBox from '../../../client/assets/empty-box.svg'
 import QuickStatsBar from 'client/components/QuickStatsBar/QuickStatsBar'
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime)
+
 
 import Warning from 'client/components/Warning/Warning'
+import BarGraph from 'client/components/BarGraph'
 
 const isEmptyObject = (input) => {
   try {
@@ -217,6 +222,29 @@ class ResultPage extends PureComponent {
       resultsError
     )
 
+    const stats = [
+      {
+        symbol: 'No changes are needed',
+        holdingsPercent: 0.3,
+        color: '#00EA92',
+      },
+      {
+        symbol: 'Search and replace',
+        holdingsPercent: 0.4,
+        color: '#627EEA',
+      },
+      {
+        symbol: 'Manual refactor',
+        holdingsPercent: 0.2,
+        color: '#F3BA2F',
+      },
+      {
+        symbol: 'Completely rewrite',
+        holdingsPercent: 0.1,
+        color: '#FF0000',
+      }
+    ]
+
     const getQuickStatsBar = () =>
       resultsPromiseState === 'fulfilled' && (
         <QuickStatsBar
@@ -251,13 +279,20 @@ class ResultPage extends PureComponent {
             )}
 
             {changeLogResultsPromiseState === 'fulfilled' && <div className="change-logs">
-              {changeLogResults.map(release => <div key={release.id}>
+              {changeLogResults.map(release => <div key={release.id} className="change-logs__item">
                 <h2>
                   <a href={release.html_url} target="_blank" rel="noreferrer" >${release.name}</a>
                 </h2>
-                <p className="sub">{release.created_at}</p>
-                <div className="chane-logs__content">
+                <p className="sub">{dayjs(release.created_at).fromNow()}</p>
+                <div className="change-logs__content">
                   <ReactMarkdown>{release.body}</ReactMarkdown>
+                </div>
+                <div className="change-logs__stats">
+                  <BarGraph data={stats} />
+                </div>
+
+                <div>
+                  <RateChangeLog />
                 </div>
               </div>)}
             </div>}

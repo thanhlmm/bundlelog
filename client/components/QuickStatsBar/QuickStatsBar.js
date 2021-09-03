@@ -53,14 +53,7 @@ class QuickStatsBar extends Component {
         <div className="quick-stats-bar__stat quick-stats-bar__stat--optional">
           <DependencyIcon className="quick-stats-bar__stat-icon" />
           <span>
-            {dependencyCount === 0 ? (
-              'no dependencies'
-            ) : (
-              <span>
-                {dependencyCount}{' '}
-                {dependencyCount > 1 ? 'dependencies' : 'dependency'}
-              </span>
-            )}
+            Latest
           </span>
         </div>
         <div className="quick-stats-bar__stat">
