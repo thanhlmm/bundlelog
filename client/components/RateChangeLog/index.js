@@ -2,11 +2,12 @@ import API from 'client/api';
 import { useEffect, useState } from 'react';
 import BarGraph from '../BarGraph';
 import styles from './index.module.scss';
+import cx from 'classnames';
 
 const defaultData = {
   change: {
-    "1": 0,
-    "2": 0,
+    1: 0,
+    2: 0,
     3: 0,
     4: 0
   },
@@ -20,22 +21,22 @@ const defaultData = {
 const defaultStats = [
   {
     symbol: 'No changes are needed',
-    holdingsPercent: 0,
+    holdingsPercent: 0.4,
     color: '#00EA92',
   },
   {
     symbol: 'Search and replace',
-    holdingsPercent: 0,
+    holdingsPercent: 0.3,
     color: '#627EEA',
   },
   {
     symbol: 'Manual refactor',
-    holdingsPercent: 0,
+    holdingsPercent: 0.2,
     color: '#F3BA2F',
   },
   {
     symbol: 'Completely rewrite',
-    holdingsPercent: 0,
+    holdingsPercent: 0.1,
     color: '#FF0000',
   }
 ]
@@ -82,20 +83,25 @@ const RateChangeLog = ({ packageName, version }) => {
     return prev + Number(voteData.change[key]);
   }, 0)
 
-  const stats = defaultStats.map((type, index) => {
+  const stats = totalVote > 0 ? defaultStats.map((type, index) => {
     return {
       ...type,
       holdingsPercent: voteData.change[index + 1] / (totalVote || 1)
     }
-  })
+  }) : defaultStats;
 
-  console.log(voteData, stats);
+  console.log(version, totalVote);
 
   return (
-    <div>
-      <BarGraph data={stats} />
+    <div className={styles['RateChangeLog']}>
+      <div className={cx("bar-wrapper", { 'no-data': totalVote === 0 })}>
+        <div className="hider">
+          No data
+        </div>
+        <BarGraph data={stats} />
+      </div>
 
-      <div className={styles['RateChangeLog']}>
+      <div>
         <h3>How do you think on this update?</h3>
 
         <div>
@@ -116,7 +122,7 @@ const RateChangeLog = ({ packageName, version }) => {
 
         <div className="introduction">Show the community your thought about this update, so someone out there gonna save tons of time 😇</div>
       </div>
-    </div>
+    </div >
   )
 }
 
