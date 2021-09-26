@@ -212,7 +212,7 @@ class ResultPage extends PureComponent {
     newContent = newContent.replace(/@\w+/g, (match) => {
       console.log(match)
       // https://github.com/tradingview/lightweight-charts/issues/831
-      return `[${match}](https://github.com/${match}`;
+      return `[${match}](https://github.com/${match})`;
     });
 
     return newContent;
