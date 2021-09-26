@@ -7,6 +7,8 @@ import BuildProgressIndicator from 'client/components/BuildProgressIndicator'
 import RateChangeLog from 'client/components/RateChangeLog';
 import Router, { withRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+// import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { parsePackageString } from 'utils/common.utils'
 import {
   resolveBuildError,
@@ -198,6 +200,24 @@ class ResultPage extends PureComponent {
     )
   }
 
+  transformContent = (content = '', repoName = '') => {
+    // Transform issues link
+    let newContent = content
+    newContent = newContent.replace(/#\d+/g, (match) => {
+      // https://github.com/tradingview/lightweight-charts/issues/831
+      return `[${match}](https://github.com/${repoName}/issues/${match.replace('#', '')})`
+    });
+
+    // Transform author
+    newContent = newContent.replace(/@\w+/g, (match) => {
+      console.log(match)
+      // https://github.com/tradingview/lightweight-charts/issues/831
+      return `[${match}](https://github.com/${match}`;
+    });
+
+    return newContent;
+  }
+
   render() {
     const { router } = this.props;
     const {
@@ -271,7 +291,29 @@ class ResultPage extends PureComponent {
                 </div>
                 <div className="change-logs__content">
                   {/* TODO: Ask auto link issue */}
-                  <ReactMarkdown>{release.body}</ReactMarkdown>
+                  <ReactMarkdown
+                    components={{
+                      code({ node, inline, className, children, ...props }) {
+                        const match = /language-(\w+)/.exec(className || '')
+                        return !inline && match ? (
+                          <SyntaxHighlighter
+                            // style={dark}
+                            language={match[1]}
+                            PreTag="div"
+                            {...props}
+                          >
+                            {String(children).replace(/\n$/, '')}
+                          </SyntaxHighlighter>
+                        ) : (
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        )
+                      }
+                    }}
+                  >
+                    {this.transformContent(release.body, repoName)}
+                  </ReactMarkdown>
                 </div>
                 <div className="change-logs__stats">
                   <RateChangeLog packageName={router.query.packageString[0]} version={release.tag_name} />

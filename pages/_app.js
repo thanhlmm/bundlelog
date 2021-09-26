@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 
+// TODO: migrate to module style
 import 'client/components/Layout/Layout.scss'
 import 'client/components/AutocompleteInput/AutocompleteInput.scss';
 import 'client/components/AutocompleteInputBox/AutocompleteInputBox.scss';
