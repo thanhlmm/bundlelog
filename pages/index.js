@@ -143,7 +143,7 @@ export default class Home extends PureComponent {
             <span className="logo__alt">Log</span>
           </div>
           <h1 className="homepage__tagline">
-            find change log of npm packages on you project
+            find change log of npm packages on your project
           </h1>
           <AutocompleteInputBox className="homepage__search-input">
             <AutocompleteInput
